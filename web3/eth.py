@@ -423,10 +423,10 @@ class AsyncEth(BaseEth):
         return await self._get_raw_transaction(transaction_hash)  # type: ignore
 
     async def get_raw_transaction_by_block(
-        self, block_identifier: BlockIdentifier, index: int
+        self, block_identifier: BlockIdentifier, transaction_index: int
     ) -> HexBytes:
         # types ignored b/c mypy conflict with BlockingEth properties
-        return await self._get_raw_transaction_by_block(block_identifier, index)  # type: ignore
+        return await self._get_raw_transaction_by_block(block_identifier, transaction_index)  # type: ignore
 
     async def generate_gas_price(
         self, transaction_params: Optional[TxParams] = None
@@ -740,9 +740,9 @@ class Eth(BaseEth):
         return self._get_raw_transaction(transaction_hash)
 
     def get_raw_transaction_by_block(
-        self, block_identifier: BlockIdentifier, index: int
+        self, block_identifier: BlockIdentifier, transaction_index: int
     ) -> HexBytes:
-        return self._get_raw_transaction_by_block(block_identifier, index)
+        return self._get_raw_transaction_by_block(block_identifier, transaction_index)
 
     def getTransactionFromBlock(
         self, block_identifier: BlockIdentifier, transaction_index: int
